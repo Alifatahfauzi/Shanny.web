@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register robot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-animation" id="bg-animation">
+        <div class="particles" id="particles"></div>
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="pulse"></div>
+    </div>
+
+    <div class="main-content">
+        <div id="login-page" class="form-container fade-in">
+            <div class="form-header">
+                <div class="form-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h1>Shanny - Login</h1>
+                <p>Masukan Ip & Pass sistem</p>
+            </div>
+
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="login-ip">Alamat IP</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-network-wired"></i>
+                        <input type="text" id="login-ip" placeholder="Contoh: 180.145.23.20">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-key"></i>
+                        <input type="password" id="login-password" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="login-btn" class="btn login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <button id="show-register-modal" class="btn register-btn">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                </div>
+
+                <div id="login-message" class="message"></div>
+                <div id="login-loading" class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Memverifikasi kredensial...</p>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <span style="display: block; font-size: 16px; font-weight: 600; color: var(--text);">Shanny.SH</span>
+                <span style="display: block; margin-top: 5px; font-size: 12px; color: var(--text-secondary);">Created By <span style="font-weight: 600; color: #fff;">Fauzialifatah</span>. All rights reserved.</span>
+                <div style="margin-top: 15px;">
+                    <a href="https://github.com/Alifatahfauzi" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-size: 14px;">GitHub</a>
+                    <a href="#" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-size: 14px;">Instagram</a>
+                    <a href="https://www.youtube.com/@Fauzialifatah" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-size: 14px;">Youtube</a>
+                    <a href="https://t.me/FauziAlifatah" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px; font-size: 14px;">Telegram</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="data-page" class="data-container" style="display: none;">
+            <div class="data-header">
+                <h1>Informasi Akun</h1>
+                <p>Detail informasi akun Anda</p>
+                <div class="header-buttons">
+                    <button class="btn setting-btn" id="show-chat-modal">
+                        <i class="fas fa-comments"></i> Live Chat
+                    </button>
+                    <button class="btn setting-btn" id="show-setting-modal">
+                        <i class="fas fa-cog"></i> Pengaturan
+                    </button>
+                    <button class="btn logout-btn" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <div class="welcome-message">
+                    <i class="fas fa-check-circle"></i> Login Berhasil! Selamat datang.
+                </div>
+
+                <div class="user-info">
+                    <div class="info-item">
+                        <span class="info-label">
+                            <i class="fas fa-user"></i> Nama
+                        </span>
+                        <span class="info-value" id="user-name"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">
+                            <i class="fas fa-phone"></i> Nomor Telepon
+                        </span>
+                        <span class="info-value" id="user-nomor"></span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">
+                            <i class="fas fa-network-wired"></i> Alamat IP
+                        </span>
+                        <span class="info-value" id="user-ip"></span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">
+                            <i class="fas fa-key"></i> Password
+                        </span>
+                        <span class="info-value" id="user-password"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-register-modal">&times;</span>
+            <div class="form-header">
+                <div class="form-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h1>Shanny - Register</h1>
+                <p>Buat akun baru</p>
+            </div>
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="register-name">Nama</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="register-name" placeholder="Nama Anda">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="register-nomor">Nomor Telepon</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-phone"></i>
+                        <input type="text" id="register-nomor" placeholder="628xxxxxxxxxx">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-ip">Alamat IP</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-network-wired"></i>
+                        <input type="text" id="register-ip" placeholder="Contoh: 180.145.23.20">
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="register-btn" class="btn register-btn">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                </div>
+
+                <div id="register-message" class="message"></div>
+                <div id="register-loading" class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Mendaftarkan akun...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="setting-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-setting-modal">&times;</span>
+            <div class="form-header">
+                <div class="form-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h1>Pengaturan Akun</h1>
+                <p>Ubah detail akun Anda</p>
+            </div>
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="setting-name">Nama Baru</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="setting-name" placeholder="Nama Baru Anda">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="setting-nomor">Nomor Telepon Baru</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-phone"></i>
+                        <input type="text" id="setting-nomor" placeholder="628xxxxxxxxxx">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="setting-ip">Alamat IP Baru</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-network-wired"></i>
+                        <input type="text" id="setting-ip" placeholder="Contoh: 180.145.23.20">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="setting-password">Password Baru</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-key"></i>
+                        <input type="text" id="setting-password" placeholder="Kosongkan untuk tetap">
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="save-setting-btn" class="btn login-btn">
+                        <i class="fas fa-save"></i> Simpan Perubahan
+                    </button>
+                </div>
+                
+                <div id="setting-message" class="message"></div>
+                <div id="setting-loading" class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Menyimpan perubahan...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-chat-modal">&times;</span>
+            <div class="form-header">
+                <div class="form-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h1>Live Chat</h1>
+                <p>Terhubung dengan pengguna lain</p>
+            </div>
+            <div class="form-body">
+                <div class="chat-content">
+                    <div class="message-list" id="message-list"></div>
+                    <div class="chat-input">
+                        <input type="text" id="chat-input-text" placeholder="Ketik pesan Anda...">
+                        <button id="send-chat-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        <span id="chat-cooldown-message" class="chat-cooldown-message">Tunggu 10 detik sebelum mengirim pesan lagi.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
